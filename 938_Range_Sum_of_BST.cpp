@@ -13,15 +13,16 @@ public:
     {
         if(root!=nullptr)
         {
-            rangeSumBST (root-> left, L, R);
-            rangeSumBST (root-> right, L, R);
-            
             if(root->val >=L &&  root->val <=R)
             {
-                sum += root->val;   
+                return root->val + rangeSumBST (root-> left, L, R) + rangeSumBST (root-> right, L, R);
+            }
+            else
+            {
+                return rangeSumBST (root-> left, L, R) + rangeSumBST (root-> right, L, R);
             }
         }
-        return sum;  
+        
+        return 0;  
     }
-    int sum;
 };
